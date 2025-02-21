@@ -334,3 +334,14 @@ header h1 {
     transform: translateY(0);
   }
 }
+
+#summary button {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 24px;
+  background: black;
+  color: white;
+  cursor: pointer;
+}

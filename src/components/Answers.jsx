@@ -12,7 +12,7 @@ export default function Answers({
   const shuffledAnswers = useRef([...answers].sort(() => Math.random() - 0.5));
   return (
     <ul id="answers">
-      {shuffledAnswers.current.map((answer) => {
+      {shuffledAnswers.current.map((answer, index) => {
         const isSelected = seletedAnswer === answer;
 
         let cssClasses = "";
@@ -30,7 +30,7 @@ export default function Answers({
 
         console.log(cssClasses);
         return (
-          <li key={answer} className="answer">
+          <li key={index} className="answer">
             <button
               onClick={() => onSelect(answer)}
               className={answerState}

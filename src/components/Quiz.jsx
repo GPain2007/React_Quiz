@@ -1,10 +1,12 @@
 import { useState, useCallback } from "react";
 import QUESTIONS from "../../questions.js";
-import QuizComplete from "../assets/quiz-complete.png";
+
 import Question from "./Question";
+import Summary from "./Summary.jsx";
 
 export default function Quiz() {
   const [userAnswers, setUserAnswers] = useState([]);
+  const [index, setIndex] = useState(0);
 
   const activeQuestionIndex = userAnswers.length;
 
@@ -23,13 +25,12 @@ export default function Quiz() {
     handleSelectAnswer(null);
   }, [handleSelectAnswer]);
 
+  function handleRestart() {
+    window.location.href = window.location.href;
+  }
+
   if (quizCompleted) {
-    return (
-      <div id="summary">
-        <img src={QuizComplete} />
-        <h2>Quiz completed!</h2>
-      </div>
-    );
+    return <Summary userAnswers={userAnswers} onRestart={handleRestart} />;
   }
 
   return (
@@ -39,6 +40,7 @@ export default function Quiz() {
         index={activeQuestionIndex}
         onSelect={handleSelectAnswer}
         onSelecthandleSkip={handleSkip}
+        onIndex={index}
       />
     </div>
   );
