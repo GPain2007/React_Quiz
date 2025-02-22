@@ -18,7 +18,12 @@ export default function Summary({ userAnswers, onRestart, onIndex }) {
     (correctAnswers.length / userAnswers.length) * 100
   );
   const wrongPercentage = 100 - skippedPercentage - correctPercentage;
-
+  localStorage.setItem("correctAnswers", correctAnswers.length);
+  localStorage.setItem("wrongAnswers", wrongAnswers.length);
+  localStorage.setItem("skippedAnswers", skippedAnswers.length);
+  const correct = localStorage.getItem("correctAnswers");
+  const wrong = localStorage.getItem("wrongAnswers");
+  const skipped = localStorage.getItem("skippedAnswers");
   return (
     <div id="summary">
       <img src={QuizComplete} alt="Trophy icon" />
